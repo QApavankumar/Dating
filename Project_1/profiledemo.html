@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Screen</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-top: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        #profile-photo {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            margin-top: 20px;
+        }
+
+        small.form-text {
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+
+   <!-- Navbar -->
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <a class="navbar-brand" href="#">App Logo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item ">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="profiles.html">Profiles</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Search</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="chat.html">Chat</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Notification</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Settings</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Subscription</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <div class="container">
+        <h2 class="mt-4">Create or Edit Profile</h2>
+
+        <!-- Profile Form -->
+        <form id="profile-form">
+            <!-- Profile Photo -->
+            <div class="form-group">
+                <label for="profile-photo">Profile Photo</label>
+                <input type="file" class="form-control-file" id="profile-photo" accept="image/*">
+                <small class="form-text text-muted">Upload a clear photo of yourself.</small>
+            </div>
+
+            <!-- Personal Details -->
+            <div class="form-group">
+                <label for="full-name">Full Name</label>
+                <input type="text" class="form-control" id="full-name" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" class="form-control" id="age" placeholder="25" required>
+            </div>
+            <div class="form-group">
+                <label for="bio">Short Bio</label>
+                <textarea class="form-control" id="bio" rows="3" placeholder="Write something about yourself"
+                    required></textarea>
+            </div>
+
+            <!-- Preferences Section -->
+            <h4>Preferences</h4>
+            <div class="form-group">
+                <label for="interests">Interests</label>
+                <input type="text" class="form-control" id="interests" placeholder="e.g., Hiking, Cooking">
+            </div>
+            <div class="form-group">
+                <label for="looking-for">What are you looking for?</label>
+                <select class="form-control" id="looking-for">
+                    <option>Friendship</option>
+                    <option>Relationship</option>
+                    <option>Networking</option>
+                    <option>Dating</option>
+                </select>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary">Save Profile</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('profile-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Get the form data
+            const fullName = document.getElementById('full-name').value;
+            const age = document.getElementById('age').value;
+            const bio = document.getElementById('bio').value;
+            const interests = document.getElementById('interests').value;
+            const lookingFor = document.getElementById('looking-for').value;
+            const profilePhoto = document.getElementById('profile-photo').files[0];
+
+            // Display a message confirming the submission
+            if (fullName && age && bio && profilePhoto) {
+                alert(`Profile Saved!\nName: ${fullName}\nAge: ${age}\nInterests: ${interests}\nLooking for: ${lookingFor}\nBio: ${bio}`);
+
+                // Optionally, you could save this data into a backend or local storage.
+                // For now, we just reset the form as an example:
+                document.getElementById('profile-form').reset();
+            } else {
+                alert('Please fill in all required fields.');
+            }
+        });
+
+    </script>
+</body>
+
+</html>
