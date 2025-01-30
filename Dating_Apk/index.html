@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Screen with Navbar</title>
+    <!-- bootstrap css links -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+        integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- fontawesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        /* .navbar {
+            margin-bottom: 20px;
+        } */
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 45%;
+        }
+
+        .card img {
+            max-height: 250px;
+            object-fit: cover;
+        }
+
+        .profile-card .card-body {
+            text-align: center;
+        }
+
+        #matches-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .match-card {
+            width: 30%;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .match-card img {
+            max-width: 100%;
+            border-radius: 50%;
+        }
+
+        button {
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <a class="navbar-brand ms-2" href="index.html"><b style="font-size: 21px;">DateNest</b></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="profile.html">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Search.html">Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="chat.html">Chat</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="notification.html">Notification</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="settings.html">Settings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="subscription.html">Subscription</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="logout()">logout</a>
+                </li>
+               
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Featured Profiles Section -->
+            <h2>Featured Profiles</h2>
+            <div class="col-12 card-container">
+                <div class="card profile-card" style="width: 18rem;">
+                    <img src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                        class="card-img-top" alt="Profile 1">
+                    <div class="card-body">
+                        <h5 class="card-title">John Doe</h5>
+                        <p class="card-text">25 years old, Software Developer</p>
+                        <button class="btn btn-primary" onclick="viewMore('John Doe')">View Profile</button>
+                    </div>
+                </div>
+                <div class="card profile-card" style="width: 18rem;">
+                    <img src="https://images.pexels.com/photos/1121796/pexels-photo-1121796.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                        class="card-img-top" alt="Profile 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Jane Smith</h5>
+                        <p class="card-text">30 years old, Graphic Designer</p>
+                        <button class="btn btn-primary" onclick="viewMore('Jane Smith')">View Profile</button>
+                    </div>
+                </div>
+                <div class="card profile-card" style="width: 18rem;">
+                    <img src="https://images.pexels.com/photos/1182825/pexels-photo-1182825.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                        class="card-img-top" alt="Profile 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Vin Diesel</h5>
+                        <p class="card-text">25 years old, Software Developer</p>
+                        <button class="btn btn-primary"  onclick="viewMore('Vin Diesel')">View Profile</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Matches Section -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2>Your Matches</h2>
+            <div id="matches-container">
+                <!-- Matches will be dynamically added via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Access Section -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2>Quick Access</h2>
+            <button class="btn btn-secondary" id="search-btn" onclick="startChat()">Search</button>
+            <button class="btn btn-secondary" id="settings-btn">Settings</button>
+        </div>
+    </div>
+    </div>
+
+
+
+    <!-- Your page content here -->
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white mt-4">
+        <div class="container py-3">
+            <div class="row">
+                <!-- Profiles Link -->
+                <div class="col-6 col-md-3">
+                    <a href="profile.html" class="text-white text-decoration-none">
+                        <h5>Profile</h5>
+                    </a>
+
+                </div>
+
+                <!-- Search Link -->
+                <div class="col-6 col-md-3">
+                    <a href="search.html" class="text-white text-decoration-none">
+                        <h5>Search</h5>
+                    </a>
+                </div>
+
+                <!-- Settings Link -->
+                <div class="col-6 col-md-3">
+                    <a href="Settings.html" class="text-white text-decoration-none">
+                        <h5>Settings</h5>
+                    </a>
+                </div>
+
+                <!-- Subscription Link -->
+                <div class="col-6 col-md-3">
+                    <a href="subscription.html" class="text-white text-decoration-none">
+                        <h5>Subscription</h5>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Bottom Section -->
+        <div class="text-center">
+            <p class="mb-0">&copy; 2025 Your Dating App. All Rights Reserved.</p>
+        </div>
+    </footer>
+     <!-- Full-Screen Modal -->
+     <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="profileModalLabel">Profile Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Modal Content Will Be Filled By JavaScript -->
+                    <div id="modalProfileContent">
+                        <!-- Profile details will be inserted here -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success" id="addFriendBtn" onclick="addFriend()">Add Friend</button>
+                    <button id="chatBtn" class="text-light btn btn-primary" onclick="startChat() ">
+                        Chat
+                    </button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script> -->
+
+    <script>
+        // Function to handle the "View More" button click
+        function viewMore(profileName) {
+            // You can dynamically set the details for the profile here
+            let profileDetails = {
+                'John Doe': {
+                    image: 'https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                    name: 'John Doe',
+                    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                    email: 'john.doe@example.com',
+                    phone: '+123 456 7890',
+                    address: '1234 Some Street, Some City, Some Country'
+                },
+                'Jane Smith': {
+                    image: 'https://images.pexels.com/photos/1121796/pexels-photo-1121796.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                    name: 'Jane Smith',
+                    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                    email: 'jane.smith@example.com',
+                    phone: '+234 567 8901',
+                    address: '5678 Another Street, Some City, Some Country'
+                },
+                'Vin Diesel':{
+                    image: 'https://images.pexels.com/photos/1182825/pexels-photo-1182825.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                    name: 'Vin Diesel',
+                    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                    email: 'emma.Brown@example.com',
+                    phone: '+234 567 8901',
+                    address: '5678 Another Street, Some City, Some Country'
+
+                },
+                'Lucas White':{
+                    image: 'https://images.pexels.com/photos/1182826/pexels-photo-1182826.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                    name: 'Lucas White',
+                    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                    email: 'Lucas.white@example.com',
+                    phone: '+234 567 8901',
+                    address: '5678 Another Street, Some City, Some Country'
+
+                },    
+                'Lily Green':{
+                    image: 'https://images.pexels.com/photos/769745/pexels-photo-769745.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                    name: 'Lily Green',
+                    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                    email: 'Lily.Green@example.com',
+                    phone: '+234 567 8901',
+                    address: '5678 Another Street, Some City, Some Country'
+
+                },    
+                'Mason Blue':{
+                    image: 'https://images.pexels.com/photos/842811/pexels-photo-842811.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                    name: 'Mason Blue',
+                    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                    email: 'Mason.Blue@example.com',
+                    phone: '+234 567 8901',
+                    address: '5678 Another Street, Some City, Some Country'
+
+                },  
+                'Sophia Grey':{
+                    image: 'https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg',
+                    name: 'Sophia Grey',
+                    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                    email: 'Sophia.Grey@example.com',
+                    phone: '+234 567 8901',
+                    address: '5678 Another Street, Some City, Some Country'
+
+                },
+                'Oliver Black':{
+                    image: 'https://images.pexels.com/photos/845457/pexels-photo-845457.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                    name: 'Oliver Black',
+                    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                    email: 'Oliver.Black@example.com',
+                    phone: '+234 567 8901',
+                    address: '5678 Another Street, Some City, Some Country'
+
+                },  
+                'Ava White':{
+                    image: 'https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                    name: 'Ava White',
+                    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                    email: 'Ava.White@example.com',
+                    phone: '+234 567 8901',
+                    address: '5678 Another Street, Some City, Some Country'
+
+                },  
+
+
+                // Add details for all other profiles here
+            };
+
+            // Get the details based on the profile name
+            const profile = profileDetails[profileName];
+
+            // Populate the modal content with profile details
+            const modalContent = `
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="${profile.image}" class="img-fluid rounded-circle" alt="Profile Image">
+                    </div>
+                    <div class="col-md-8">
+                        <h3>${profile.name}</h3>
+                        <p><strong>Bio:</strong> ${profile.bio}</p>
+                        <p><strong>Email:</strong> ${profile.email}</p>
+                        <p><strong>Phone:</strong> ${profile.phone}</p>
+                        <p><strong>Address:</strong> ${profile.address}</p>
+                    </div>
+                </div>
+            `;
+
+            // Insert the content into the modal
+            document.getElementById('modalProfileContent').innerHTML = modalContent;
+
+            // Show the modal
+            var myModal = new bootstrap.Modal(document.getElementById('profileModal'));
+            myModal.show();
+        }
+
+        // Function to simulate adding a friend
+        function addFriend() {
+            alert("You have sent a friend request!");
+            // Add logic here to actually add the friend (e.g., API call)
+        }
+      function logout() 
+      {
+        window.location.href='login.html'
+      }
+    // const  startChat = () => 
+    // {
+    //     window.location.href='chat.html';
+    // }
+
+    function  startChat()
+    {
+        window.location.href='chat.html';
+    }
+
+
+    </script>
+
+
+    <!-- bootstrap link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+        integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        // Sample matches data
+        const matchesData = [
+            { name: "Alice", age: 28, image: "https://via.placeholder.com/100" },
+            { name: "Bob", age: 33, image: "https://via.placeholder.com/100" },
+            { name: "Charlie", age: 26, image: "https://via.placeholder.com/100" }
+        ];
+
+        // Dynamically display matches
+        const matchesContainer = document.getElementById('matches-container');
+
+        matchesData.forEach(match => {
+            const matchCard = document.createElement('div');
+            matchCard.classList.add('match-card');
+            matchCard.innerHTML = `
+    <img src="${match.image}" alt="${match.name}">
+    <h5>${match.name}, ${match.age}</h5>
+    <button class="btn btn-success">Chat</button>
+  `;
+            matchesContainer.appendChild(matchCard);
+        });
+
+        // Quick access button handlers
+        document.getElementById('search-btn').addEventListener('click', () => {
+            alert("Search clicked!");
+        });
+
+        document.getElementById('settings-btn').addEventListener('click', () => {
+            alert("Settings clicked!");
+        });
+
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
